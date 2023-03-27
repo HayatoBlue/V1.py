@@ -1,0 +1,27 @@
+
+self.listaCima = ttk.Treeview(self.cima, height=2, column=("col0"))
+        self.listaCima.heading("#0", text="Vida")
+   
+
+        self.listaCima.column("#0", width=80)
+
+
+        self.listaCima.place(relx=0, rely=0.05, relwidth=0.22, relheight=0.7)
+
+
+def atualizaCima(self):
+        self.conecta()
+        self.cursor.execute("SELECT Vida FROM Atributos WHERE Id = 0")
+        self.vida = self.cursor.fetchall()[0]
+        self.vida = (self.vida[0])
+        self.vida = float(self.vida)
+
+        self.cursor.execute("SELECT Armadura FROM Atributos WHERE Id = 0")
+        self.armadura = self.cursor.fetchall()[0]
+        self.armadura =(self.armadura[0])
+        self.armadura = float(self.armadura)
+        self.vidaT = self.vida + (self.armadura*100)
+
+        self.desconecta()
+
+        return self.vidaT
